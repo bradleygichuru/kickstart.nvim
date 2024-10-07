@@ -436,33 +436,35 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
+
   {
     'stevearc/conform.nvim',
-     config = function()
-    local conform = require("conform")
-    require('conform').setup( {
-      formatters_by_ft = {
-        lua = { 'stylua' },
-        -- Conform will run multiple formatters sequentially
-        python = { 'isort', 'black' },
-        -- You can customize some of the format options for the filetype (:help conform.format)
-        rust = { 'rustfmt', lsp_format = 'fallback' },
-        -- Conform will run the first available formatter
-        typescript = { 'prettierd', 'prettier' },
-        typescriptreact = { 'prettierd', 'prettier' },
-        javascript = { 'prettierd', 'prettier' },
-        javascriptreact = { 'prettierd', 'prettier' },
-        json = { 'prettierd', 'prettier' },
-        html = { 'prettierd', 'prettier' },
-        css = { 'prettierd', 'prettier' },
-      },
-      
-      format_on_save = {
-        lsp_fallback = true,
-        timeout_ms = 500
-      },
-    })
-  end
+    config = function()
+      local conform = require 'conform'
+      require('conform').setup {
+        formatters_by_ft = {
+          lua = { 'stylua' },
+          -- Conform will run multiple formatters sequentially
+          python = { 'isort', 'black' },
+          -- You can customize some of the format options for the filetype (:help conform.format)
+          rust = { 'rustfmt', lsp_format = 'fallback' },
+          go = { 'goimports', 'gofmt' },
+          -- Conform will run the first available formatter
+          typescript = { 'prettierd', 'prettier' },
+          typescriptreact = { 'prettierd', 'prettier' },
+          javascript = { 'prettierd', 'prettier' },
+          javascriptreact = { 'prettierd', 'prettier' },
+          json = { 'prettierd', 'prettier' },
+          html = { 'prettierd', 'prettier' },
+          css = { 'prettierd', 'prettier' },
+        },
+
+        format_on_save = {
+          lsp_fallback = true,
+          timeout_ms = 500,
+        },
+      }
+    end,
   },
   -- LSP Plugins
   {
